@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Range Slider</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+            padding: 0 0 50px;
+            color: #333;
+            font-size: 14px;
+        }
+        p {
+            margin: 0;
+        }
+        pre {
+            padding: 20px 20px 0 0;
+            background: #f9f9f9;
+            border: 1px solid #f2f2f2;
+            margin-bottom: 30px;
+            line-height: 2em;
+        }
+        .top {
+            background-color: #333;
+            border-bottom: 3px solid #00b3bc;
+            color: #fff;
+            padding: 20px;
+        }
+        .top h1 {
+            font-size: 20px;
+            text-align: center;
+        }
+        .container {
+            width: 80%;
+            margin: 70px auto;
+        }
+        .slider-container {
+            width: 90%;
+            max-width: 500px;
+            margin: 0 auto 50px;
+        }
+        .config {
+            border: 1px solid #f2f2f2;
+            margin-bottom: 30px;
+            line-height: 1.7em;
+        }
+        .config table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        .config table td {
+            padding: 10px;
+            border-bottom: 1px solid #f2f2f2;
+        }
+        .config table tr:nth-child(even) td {
+            background-color: #f9f9f9;
+        }
+        .mb {
+            margin-bottom: 15px;
+        }
+        .label {
+            font-weight: bold;
+            white-space: nowrap;
+        }
+        .download {
+            margin-bottom: 20px;
+        }
+        .download a {
+            text-decoration: none;
+            color: #00969b;
+            font-size: 16px;
+        }
+
+    </style>
+    <link rel="stylesheet" href="css/rSlider.min.css">
+</head>
+<body>
+    <div class="top">
+        <h1>single/range slider - pure JS</h1>
+    </div>
+
+    <div class="container">
+        <div class="slider-container">
+            <input type="text" id="slider" class="slider" />
+        </div>
+        <div class="slider-container">
+            <input type="text" id="slider2" class="slider" />
+        </div>
+        <div class="slider-container">
+            <input type="text" id="slider3" class="slider" />
+        </div>
+        <div class="download">
+            <a href="https://github.com/slawomir-zaziablo/range-slider">Download from Github</a>
+        </div>
+        <div class="desc">
+            <p>A MIT licensed JS range slider plugin, no dependencies required.</p>
+            <h2>How to use</h2>
+            <p>Include css and js files:</p>
+            <pre>
+    &lt;link rel="stylesheet" href="css/rSlider.min.css"&gt;
+    &lt;script src="js/rSlider.min.js"&gt;&lt;/script&gt;
+            </pre>
+            <p>Add an input field to your HTML code</p>
+            <pre>
+    &lt;input type="text" id="sampleSlider" /&gt;
+            </pre>
+            <p>Add a small Javascript piece to your JS file:</p>
+            <pre>
+    var mySlider = new rSlider({
+        target: '#sampleSlider',
+        values: [2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015],
+        range: true,
+        tooltip: true,
+        scale: true,
+        labels: true,
+        set: [2010, 2013]
+    });
+            </pre>
+
+            <h2>Configuration</h2>
+
+            <div class="config">
+                <table>
+                    <tr>
+                        <td class="label">target</td>
+                        <td>Single element's class/id or HTML object e.g. <strong>document.getElementById('sampleSlider')</strong></td>
+                    </tr>
+                    <tr>
+                        <td class="label">values</td>
+                        <td>A flat array of values e.g. <strong>[1, 2, , 4, 5]</strong> or object e.g. <strong>{min: 1, max: 10}</strong>.</td>
+                    </tr>
+                    <tr>
+                        <td class="label">step</td>
+                        <td>While using an object value {min: 0, max: 100} the step can be defined e.g. <strong>10</strong></td>
+                    </tr>
+                    <tr>
+                        <td class="label">range</td>
+                        <td>Boolean (true or false) to set if the slider is range or single type <strong>(default false)</strong></td>
+                    </tr>
+                    <tr>
+                        <td class="label">set</td>
+                        <td>A flat array of one (single slider) or two (range slider) values to set initial values <strong>(optional)</strong></td>
+                    </tr>
+                    <tr>
+                        <td class="label">width</td>
+                        <td>Number or string value (e.g. 400 or '400px') to set the slider width <strong>(optional)</strong>. Default the closest parent div width is used.</td>
+                    </tr>
+                    <tr>
+                        <td class="label">scale</td>
+                        <td>Boolean (true or false) to show or hide scale <strong>(default true)</strong>.</td>
+                    </tr>
+                    <tr>
+                        <td class="label">labels</td>
+                        <td>Boolean (true or false) to show or hide scale labels <strong>(default true)</strong>.</td>
+                    </tr>
+                    <tr>
+                        <td class="label">tooltip</td>
+                        <td>Boolean (true or false) to show or hide tooltips <strong>(default true)</strong>.</td>
+                    </tr>
+                    <tr>
+                        <td class="label">disabled</td>
+                        <td>Boolean (true or false) to disable/enable slider <strong>(default false)</strong>.</td>
+                    </tr>
+                </table>
+                
+            </div>
+
+            <h2>Methods</h2>
+            <p class="mb">Methods can be used after a new instance of slider is initiated e.g. <strong>slider.getValue();</strong></p>
+
+            <div class="config">
+                <table>
+                    <tr class="row">
+                        <td class="label">getValue()</td>
+                        <td>Returns selected values.</td>
+                    </tr>
+                    <tr class="row">
+                        <td class="label">disabled(true/false)</td>
+                        <td>Makes a slider disabled/enabled</td>
+                    </tr>
+                    <tr class="row">
+                        <td class="label">onChange(callback)</td>
+                        <td>the callback function argument returns current selected values e.g<br><strong>mySlider.onChange(function (values) { // argument values represents current values });</strong></td>
+                    </tr>
+                    <tr class="row">
+                        <td class="label">setValues(start, end)</td>
+                        <td>Method gets one (range: false) or two (range: true) parameters and sets the values (see example above).</td>
+                    </tr>
+                    <tr class="row">
+                        <td class="label">destroy()</td>
+                        <td>Removes an instance of slider e.g. <strong>mySlider.destroy();</strong></td>
+                    </tr>                    
+                </table>
+            </div>
+        </div>
+        <div class="download">
+            <a href="https://github.com/slawomir-zaziablo/range-slider">Download from Github</a>
+        </div>
+    </div>
+    
+    <script src="js/rSlider.min.js"></script>
+    <script>
+        (function () {
+            'use strict';
+
+            var init = function () {                
+
+                var slider2 = new rSlider({
+                    target: '#slider2',
+                    values: [0, 1, 2, 3, 4, 5, 6, '7', 8],
+                    range: false,
+                    set: [5],
+                    tooltip: false,
+                    onChange: function (vals) {
+                        console.log(vals);
+                    }
+                });
+
+                var slider3 = new rSlider({
+                    target: '#slider3',
+                    values: {min: 0, max: 100},
+                    step: 10,
+                    range: true,
+                    set: [10, 40],
+                    scale: true,
+                    labels: false,
+                    onChange: function (vals) {
+                        console.log(vals);
+                    }
+                });
+
+                var slider = new rSlider({
+                    target: '#slider',
+                    values: [2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015],
+                    range: true,
+                    set: [2010, 2013],
+                    onChange: function (vals) {
+                        console.log(vals);
+                    }
+                });
+            };
+            window.onload = init;
+        })();
+    </script>
+</body>
+</html>
