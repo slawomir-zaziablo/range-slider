@@ -151,7 +151,7 @@
 
 		var pieces = this.slider.querySelectorAll('span');
 
-		for (var i = 0, iLen = pieces.length; i < iLen; i++)
+		for (var i = 0, iLen = pieces.length - 1; i < iLen; i++)
 			pieces[i].style.width = this.step + 'px';
 
 		return this.setValues();
