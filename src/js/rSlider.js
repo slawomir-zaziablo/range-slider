@@ -34,7 +34,9 @@
 			tooltip:	true,
 			step: 		null,
 			disabled:	false,
-			onChange:	null
+			onChange:	null,
+            callOnChangeInFirstTime: true,
+            qtdTimes: 0,
 		};
 
 		this.cls = {
@@ -243,9 +245,19 @@
 		if (this.values.start < 0) this.values.start = 0;
 
 		this.selected.style.width = (this.values.end - this.values.start) * this.step + 'px';
-		this.selected.style.left = this.values.start * this.step + 'px';		
-		
-		return this.onChange();
+		this.selected.style.left = this.values.start * this.step + 'px';
+
+        if(this.conf.callOnChangeInFirstTime){
+            return this.onChange();
+        }
+
+        if(!this.conf.callOnChangeInFirstTime){
+            if(this.conf.qtdTimes > 0){
+                return this.onChange()
+            }
+        }
+
+        this.conf.qtdTimes++;
 	};
 
 	RS.prototype.onClickPiece = function (e) {
