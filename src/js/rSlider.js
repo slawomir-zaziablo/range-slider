@@ -315,7 +315,7 @@
 		var events = ev.split(' ');
 
 		for (var i = 0, iLen = events.length; i < iLen; i++)
-			el.addEventListener(events[i], callback);
+			el.addEventListener(events[i], callback, {passive: true});
 	},
 
 	prepareArrayValues = function (conf) {
